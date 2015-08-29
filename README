@@ -1,0 +1,56 @@
+Disk Drive Test README
+http://lucylabs.com/disk-drive-test
+
+Description
+-----------
+
+Disk Drive Test (ddt) is a utility for testing storage interfaces and 
+disk drives. It was originally written to test eSATA interfaces for
+motherboard designs, but has been proven useful in all areas of
+storage testing. 
+
+Disk Drive Test will launch multiple read and write threads to the 
+storage device defined in the command line options. Each thread has its
+own buffer filled with random data that is written to the disk and 
+then read back and verified. The size of the files written is also
+defined in the command line. See the -h option for more information
+on specific usage. 
+
+To make sure that data being written to the disk is read back from
+disk and not filesystem cache, the total number of bytes written
+(threads * minfilesize of each file) should be greater than the amount 
+of total system memory.
+
+Disk Drive Test provides real-time status on the test running,
+including amount of time left, SMART status, drive temperature, CPU
+utilization, and thread status. It also logs test status in the system
+event log.
+
+Running as superuser (root) is required for the reading of SMART data.
+
+License
+-------
+
+Disk Drive Test is licensed under the MIT License (MIT).
+
+Building and Installation
+-------------------------
+
+After downloading and extracting Disk Drive Test, configure and
+build as follows:
+
+./configure
+make
+
+Then as root:
+
+make install
+
+Dependencies
+------------
+
+Disk Drive Test depends on ncurses (development), libatasmart
+(development), and libstatgrab (development) to build correctly.
+
+
+
